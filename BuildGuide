@@ -1,0 +1,15 @@
+
+1) Start VS-22
+
+2) Project --> Configuration --> VC++ Directories --> General
+	a) Set Include Directories to \Tag23\lib\include
+	b) Set Library Directories to C:\Users\...\lib\include;C:\Users\....\lib\lib-vc2019;$(LibraryPath)
+
+3) Project --> Configuration --> Linker --> Input --> Additional Dependencies, add "glfw3.lib;opengl32.lib;" before "%(AdditionalDependencies)
+
+If getting an error about being unable to link kernel32.lib then reinsall Visual C++ Executable.
+
+REMEMBER TO MANUALLY ADD EVERYTHING IN src TO THE PROJECT IN VS 
+
+
+
