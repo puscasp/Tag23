@@ -3,6 +3,8 @@
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void processInput(GLFWwindow* window);
+
 
 int main() {
 	glfwInit();
@@ -10,7 +12,8 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Tag23", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 600, "Tag23", NULL, NULL); //must make context AS SOON as window is made
+	glfwMakeContextCurrent(window);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -18,7 +21,7 @@ int main() {
 		return -1;
 	}
 
-	glfwMakeContextCurrent(window);
+	
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 
@@ -28,6 +31,15 @@ int main() {
 
 
 	while (!glfwWindowShouldClose(window)) {
+		processInput(window);
+
+
+		//rendering commands
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+
+		//render loop
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -41,4 +53,9 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	// make sure the viewport matches the new window dimensions; note that width and 
 	// height will be significantly larger than specified on retina displays.
 	glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow* window) {
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
 }
