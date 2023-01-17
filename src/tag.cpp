@@ -2,6 +2,9 @@
 #include <GLFW\glfw3.h>
 #include <iostream>
 
+#include <shader.h>
+
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
@@ -43,6 +46,7 @@ int main() {
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+	/*
 	//Vertex shader code
 	const char* vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
@@ -80,7 +84,7 @@ int main() {
 	glUseProgram(shaderProgram);
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
-
+	*/
 
 	//Linking Vertex Attributes - Necessary b/c opengl allows any input in the form of vertex attributes
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -101,6 +105,12 @@ int main() {
 	glEnableVertexAttribArray(0);
 
 
+	//Shader setup
+	shader testShader("C:/Users/Paul/Desktop/Tag23/src/shaders/vtest.vs", "C:/Users/Paul/Desktop/Tag23/src/shaders/ftest.fs");
+
+
+	//RENDER LOOP BODY
+
 	while (!glfwWindowShouldClose(window)) {
 		processInput(window);
 
@@ -109,8 +119,14 @@ int main() {
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		//Shading
+
+		testShader.use();
+		float time = glfwGetTime();
+		float green = sin(time) / 2.0f + 0.5f;
+
+
 		//Drawing
-		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
