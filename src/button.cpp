@@ -1,11 +1,12 @@
 
 #include <stdlib.h>
 
+
 #include "button.h"
 
-button::button(float* verts, int* vertlen, int* indices, int* indlen, float newverts[]) {
+button::button(std::vector<Vertex> verts, std::vector<Index> indices, Vertex newverts[]) {
 
-	int numnewverts = sizeof(newverts) / sizeof(float);
+	int numnewverts = sizeof(newverts) / sizeof(Vertex);
 
 
 	/*
@@ -18,12 +19,15 @@ button::button(float* verts, int* vertlen, int* indices, int* indlen, float newv
 	for (int j = 0; j < numnewverts; ++j) { //iterate through every new vertex
 
 
-		for (int i = 0; i < *vertlen; ++i) { //compare to every old vertex
-			if (verts[i] == newverts[j]) {
+		for (int i = 0; i < verts.size(); ++i) { //compare to every old vertex
+			if (verts[i].x == newverts[j].x && verts[i].y == newverts[j].y && verts[i].z == newverts[j].z) {
 
-				++(*indlen);
-				indices = (int*)realloc(indices, sizeof(int) * (*indlen));
-				indices[*indlen - 1] = i;
+			//	indices.push_back(i);
+
+
+				//++(*indlen);
+				//indices = (int*)realloc(indices, sizeof(int) * (*indlen));
+				//indices[*indlen - 1] = i;
 
 				goto endloop; //bounce
 			}
@@ -31,15 +35,15 @@ button::button(float* verts, int* vertlen, int* indices, int* indlen, float newv
 
 		//the following only happen s if a given vertex is new:
 
-		++(*vertlen); 
-		verts = (float*)realloc(verts, sizeof(float) * (*vertlen));
-		verts[*vertlen - 1] = newverts[j];
+		//++(*vertlen); 
+		//verts = (float*)realloc(verts, sizeof(float) * (*vertlen));
+		//verts[*vertlen - 1] = newverts[j];
 
-		++(*indlen);
-		indices = (int*)realloc(indices, sizeof(int) * (*indlen));
-		indices[*indlen - 1] = *vertlen;
+		//++(*indlen);
+		//indices = (int*)realloc(indices, sizeof(int) * (*indlen));
+		//indices[*indlen - 1] = *vertlen;
 
-		endloop:
+	endloop:;
 	}
 
 

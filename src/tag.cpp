@@ -1,14 +1,16 @@
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
 #include <iostream>
+#include <vector>
 
 #include <shader.h>
-
+#include <types.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 void click_callback(GLFWwindow* window, int button, int action, int mods);
 double x, y;
+
 
 int main() {
 	glfwInit();
@@ -32,7 +34,30 @@ int main() {
 
 
 	glViewport(0, 0, 800, 600);
-	float vertices[] =
+
+
+	Vertex v1 = { 0.5, 0.5, 0.0 };
+	Vertex v2 = { 0.5, -0.5, 0.0 };
+	Vertex v3 = { -0.5, -0.5, 0.0 };
+	Vertex v4 = { -0.5, 0.5, 0.0 };
+
+	std::vector<Vertex> vertices = { v1, v2, v3, v4 };
+
+	std::vector<unsigned int> indices = {
+		0,1,3,
+		1,2,3
+	};
+
+	/*
+	Index i1 = { 0,1,3 };
+	Index i2 = { 1,3,2 };
+
+
+	std::vector<Index> indices = {i1,i2};
+	*/
+
+
+	/*float vertices[] =
 	{
 		0.5,0.5,0.0,
 		0.5,-0.5,0.0,
@@ -43,7 +68,7 @@ int main() {
 	unsigned int indices[] = {
 		0,1,3,
 		1,2,3
-	};
+	};*/
 
 
 
@@ -63,10 +88,10 @@ int main() {
 
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size()*sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size()*sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);

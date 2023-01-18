@@ -1,12 +1,13 @@
 #ifndef BUTTON_H
 #define BUTTON_H
-
+#include <vector>
+#include "types.h"
 
 class button {
 public:
 
 
-	button(float* verts, int* vertlen, int* indices, int* indlen, float newverts[]);
+	button(std::vector<Vertex> vertices, std::vector<Index> indices, Vertex newverts[]);
 
 	bool isPressed(double x, double y);
 
