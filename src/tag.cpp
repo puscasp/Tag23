@@ -7,7 +7,8 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
-
+void click_callback(GLFWwindow* window, int button, int action, int mods);
+double x, y;
 
 int main() {
 	glfwInit();
@@ -33,84 +34,65 @@ int main() {
 	glViewport(0, 0, 800, 600);
 	float vertices[] =
 	{
-		-0.5,-0.5,0.0,
+		0.5,0.5,0.0,
 		0.5,-0.5,0.0,
-		0.0,0.5,0.0
-
+		-0.5,-0.5,0.0,
+		-0.5,0.5,0.0
 	};
 
-	//Vertex Buffer Object
-	unsigned int VBO;
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	unsigned int indices[] = {
+		0,1,3,
+		1,2,3
+	};
 
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+
 
 	/*
-	//Vertex shader code
-	const char* vertexShaderSource = "#version 330 core\n"
-		"layout (location = 0) in vec3 aPos;\n"
-		"void main()\n"
-		"{\n"
-		" gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-		"}\0";
-	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-	//Note that &vertexShaderSource can be used to open a file, good for migrating
-	//in final copy https://stackoverflow.com/questions/22100408/what-is-the-meaning-of-the-parameters-to-glshadersource
-
-	glCompileShader(vertexShader);
-
-
-
-	//Fragment shader code
-	const char* fragmentShaderSource = "#version 330 core\n"
-		"out vec4 FragColor;\n"
-		"void main()\n"
-		"{\n"
-		"FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-		"}\n";
-	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
-
-
-	//Shader program object
-
-	unsigned int shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
-	glUseProgram(shaderProgram);
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	VBO, VAO, EBO
 	*/
 
-	//Linking Vertex Attributes - Necessary b/c opengl allows any input in the form of vertex attributes
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	unsigned int VBO, VAO, EBO;
 
-
-	//VAO
-
-	unsigned int VAO;
 	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &EBO);
+
 
 	glBindVertexArray(VAO);
 
+
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
+	//what kind of magic
+	glBindBuffer(GL_ARRAY_BUFFER, 0); //unbindes vbo (for what purpose?)
+	glBindVertexArray(0); //unbindes vao (again, why?), and why not ebo?
 
-	//Shader setup
+
+	/*
+	* SHADERS
+	*/
 	shader testShader("C:/Users/Paul/Desktop/Tag23/src/shaders/vtest.vs", "C:/Users/Paul/Desktop/Tag23/src/shaders/ftest.fs");
 
 
-	//RENDER LOOP BODY
 
+	/* ----------
+	MOUSE INPUT
+	*/
+	
+	glfwSetMouseButtonCallback(window, click_callback);
+
+
+	/*
+			RENDER LOOP BODY (per frame)
+	*/
 	while (!glfwWindowShouldClose(window)) {
 		processInput(window);
 
@@ -122,18 +104,23 @@ int main() {
 		//Shading
 
 		testShader.use();
-		float time = glfwGetTime();
-		float green = sin(time) / 2.0f + 0.5f;
+
 
 
 		//Drawing
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
 
 		//render loop
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
+
 
 	glfwTerminate();
 	return 0;
@@ -144,6 +131,14 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	// make sure the viewport matches the new window dimensions; note that width and 
 	// height will be significantly larger than specified on retina displays.
 	glViewport(0, 0, width, height);
+}
+
+void click_callback(GLFWwindow* window, int button, int action, int mods) {
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+		glfwGetCursorPos(window, &x, &y);
+		std::cout << "X: " << x << " Y: " << y << std::endl;
+	}
+
 }
 
 void processInput(GLFWwindow* window) {
