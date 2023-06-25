@@ -1,0 +1,3 @@
+/*
+Visual display of buttons and graphical elements. Is kept as a group. Has a vertex buffer per screen.
+*/
