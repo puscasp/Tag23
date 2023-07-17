@@ -5,6 +5,20 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tag23", "Tag23.vcxproj", "{17A2C012-735A-4A31-AC59-1F03BF8EB9D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7EB69E51-1F5F-4E07-BE01-06A2F96FCE2C}"
+	ProjectSection(SolutionItems) = preProject
+		x64\Debug\glad.obj = x64\Debug\glad.obj
+		x64\Debug\tag.obj = x64\Debug\tag.obj
+		x64\Debug\Tag23.exe = x64\Debug\Tag23.exe
+		x64\Debug\Tag23.exe.recipe = x64\Debug\Tag23.exe.recipe
+		x64\Debug\Tag23.ilk = x64\Debug\Tag23.ilk
+		x64\Debug\Tag23.log = x64\Debug\Tag23.log
+		x64\Debug\Tag23.pdb = x64\Debug\Tag23.pdb
+		x64\Debug\Tag23.vcxproj.FileListAbsolute.txt = x64\Debug\Tag23.vcxproj.FileListAbsolute.txt
+		x64\Debug\vc143.idb = x64\Debug\vc143.idb
+		x64\Debug\vc143.pdb = x64\Debug\vc143.pdb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

@@ -142,16 +142,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\button.cpp" />
     <ClCompile Include="..\src\glad.c" />
     <ClCompile Include="..\src\tag.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\include\shader.h" />
     <ClInclude Include="..\lib\include\types.h" />
-    <ClInclude Include="..\src\button.h" />
+    <ClInclude Include="..\src\controller.h" />
+    <ClInclude Include="..\src\entity.h" />
+    <ClInclude Include="..\src\game.h" />
+    <ClInclude Include="..\src\gameentity.h" />
+    <ClInclude Include="..\src\screen.h" />
+    <ClInclude Include="..\src\uielement.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\src\rm" />
     <None Include="..\src\shaders\ftest.fs" />
     <None Include="..\src\shaders\vtest.vs" />
   </ItemGroup>
