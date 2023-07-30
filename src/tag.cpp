@@ -31,15 +31,13 @@ int main() {
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 
-
-
 	glViewport(0, 0, 800, 600);
 
 
-	Vertex v1 = { 0.5, 0.5, 0.0 };
-	Vertex v2 = { 0.5, -0.5, 0.0 };
-	Vertex v3 = { -0.5, -0.5, 0.0 };
-	Vertex v4 = { -0.5, 0.5, 0.0 };
+	Vertex v1 = { 0.5, 0.5 };
+	Vertex v2 = { 0.5, -0.5 };
+	Vertex v3 = { -0.5, -0.5 };
+	Vertex v4 = { -0.5, 0.5 };
 
 	std::vector<Vertex> vertices = { v1, v2, v3, v4 };
 
@@ -93,7 +91,7 @@ int main() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size()*sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
 	//what kind of magic
