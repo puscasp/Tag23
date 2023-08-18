@@ -21,6 +21,9 @@
     <ClCompile Include="..\src\tag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\graphicFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\include\shader.h">
@@ -41,10 +44,13 @@
     <ClInclude Include="..\src\gameentity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\screen.h">
+    <ClInclude Include="..\src\uielement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\uielement.h">
+    <ClInclude Include="..\src\graphicFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utilFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

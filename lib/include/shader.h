@@ -13,7 +13,7 @@ class shader {
 public:
 	unsigned int ID;
 	
-	shader(const char* vPath, const char* fPath) {
+	shader(const char* vPath, const char* fPath, void* vArgs, void* fArgs) {
 		/*------------
 		//read shader source code
 		*/

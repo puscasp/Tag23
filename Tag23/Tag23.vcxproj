@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Paul\Desktop\Tag23\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\glad.c" />
+    <ClCompile Include="..\src\graphicFunctions.cpp" />
     <ClCompile Include="..\src\tag.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,8 +154,9 @@
     <ClInclude Include="..\src\entity.h" />
     <ClInclude Include="..\src\game.h" />
     <ClInclude Include="..\src\gameentity.h" />
-    <ClInclude Include="..\src\screen.h" />
+    <ClInclude Include="..\src\graphicFunctions.h" />
     <ClInclude Include="..\src\uielement.h" />
+    <ClInclude Include="..\src\utilFunctions.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\rm" />
