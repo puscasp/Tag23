@@ -2,16 +2,7 @@
 C:\Users\Paul\Desktop\Tag23\lib\include\types.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Paul\Desktop\Tag23\lib\include\types.h(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Paul\Desktop\Tag23\lib\include\types.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Paul\Desktop\Tag23\src\graphicFunctions.cpp(283,48): warning C4311: 'type cast': pointer truncation from 'unsigned int *' to 'GLuint'
-C:\Users\Paul\Desktop\Tag23\src\graphicFunctions.cpp(283,48): warning C4302: 'type cast': truncation from 'unsigned int *' to 'GLuint'
-  tag.cpp
-C:\Users\Paul\Desktop\Tag23\lib\include\types.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Paul\Desktop\Tag23\lib\include\types.h(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Paul\Desktop\Tag23\lib\include\types.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Paul\Desktop\Tag23\lib\include\shader.h(126,55): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-C:\Users\Paul\Desktop\Tag23\src\tag.cpp(90,80): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\Paul\Desktop\Tag23\src\tag.cpp(115,35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Paul\Desktop\Tag23\src\tag.cpp(115,32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
+C:\Users\Paul\Desktop\Tag23\src\graphicFunctions.cpp(291,48): warning C4311: 'type cast': pointer truncation from 'unsigned int *' to 'GLuint'
+C:\Users\Paul\Desktop\Tag23\src\graphicFunctions.cpp(291,48): warning C4302: 'type cast': truncation from 'unsigned int *' to 'GLuint'
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Tag23.vcxproj -> C:\Users\Paul\Desktop\Tag23\Tag23\x64\Debug\Tag23.exe
