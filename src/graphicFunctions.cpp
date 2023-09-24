@@ -179,7 +179,6 @@ uiElement generateUiElement(Vertex verts[], int nverts, unsigned int* s, ocfunc 
 	elem.onClick = ocptr;
 	elem.onClickInput = in;
 	elem.onClickOutput = out;
-	elem.shader = s;
 
 	float maxx = -INFINITY, minx = INFINITY, maxy = -INFINITY, miny = INFINITY;
 	for (int i = 0; i < nverts; ++i)
@@ -285,9 +284,5 @@ unsigned int generateShader(const char* vPath, const char* fPath, void* vArgs, v
 
 void activateShaders(screen* s) 
 {
-	for (int i = 0; i < s->elementList.size(); ++i)
-	{
-		std::cout << "activateshaderssize: " << s->elementList[i].shader << std::endl;
-		glUseProgram((GLuint)s->elementList[i].shader);
-	}
+		glUseProgram((GLuint)s->shader);
 }
