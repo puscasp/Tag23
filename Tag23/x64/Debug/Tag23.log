@@ -1,8 +1,0 @@
-﻿  graphicFunctions.cpp
-C:\Users\Paul\Desktop\Tag23\lib\include\types.h(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Paul\Desktop\Tag23\lib\include\types.h(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Paul\Desktop\Tag23\lib\include\types.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Paul\Desktop\Tag23\src\graphicFunctions.cpp(291,48): warning C4311: 'type cast': pointer truncation from 'unsigned int *' to 'GLuint'
-C:\Users\Paul\Desktop\Tag23\src\graphicFunctions.cpp(291,48): warning C4302: 'type cast': truncation from 'unsigned int *' to 'GLuint'
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  Tag23.vcxproj -> C:\Users\Paul\Desktop\Tag23\Tag23\x64\Debug\Tag23.exe

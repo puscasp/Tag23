@@ -31,7 +31,6 @@ typedef struct {
 	ocfunc onClick;
 	voidArray onClickInput;
 	voidArray onClickOutput;
-	unsigned int* shader;
 
 } uiElement;
 
@@ -41,7 +40,7 @@ typedef struct {
 	std::map<Vertex, int> vertexIndexTable; 
 	std::vector<int> indices;
 	std::vector<Vertex> v;
-	
+	unsigned int* shader;
 	//for rendering ONLY! for onclicks, iterate foreach uielement foreach triangle and check using angle trick
 
 } screen;
