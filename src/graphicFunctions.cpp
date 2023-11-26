@@ -145,6 +145,8 @@ void updateScreenDrawTable(screen* s, bool wipe)
 
 void buildScreenBuffers(screen* s)
 {
+
+
 	glGenVertexArrays(1, &s->VAO);
 	glGenBuffers(1, &s->VBO);
 	glGenBuffers(1, &s->EBO);
@@ -158,14 +160,21 @@ void buildScreenBuffers(screen* s)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, s->EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, s->indices.size() * sizeof(unsigned int), &s->indices[0], GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	//what kind of magic
-	glBindBuffer(GL_ARRAY_BUFFER, 0); //unbindes vbo (for what purpose?)
-	glBindVertexArray(0); //unbindes vao (again, why?), and why not ebo?
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(2 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 
-	std::cout << "f: " << s->indices.size() << std::endl;
+	//what kind of magic
+	//glBindBuffer(GL_ARRAY_BUFFER, 0); //unbindes vbo (for what purpose?)
+	//glBindVertexArray(0); //unbindes vao (again, why?), and why not ebo?
+
+
+	
+
+
+	//uniforms
 
 }
 
@@ -284,5 +293,5 @@ unsigned int generateShader(const char* vPath, const char* fPath, void* vArgs, v
 
 void activateShaders(screen* s) 
 {
-		glUseProgram((GLuint)s->shader);
+	s->screenshader.use();
 }

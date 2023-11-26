@@ -105,9 +105,15 @@ public:
 
 	}
 
+	shader() {
+
+	}
 	void use() {
 		glUseProgram(ID);
 	}
+
+
+
 
 	/*
 		UNIFORM UTILS 

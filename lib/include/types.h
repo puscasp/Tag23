@@ -1,10 +1,10 @@
 #include <vector>;
 #include<map>;
+#include<shader.h>
 #include <cstdlib>;
-#include <glad\glad.h>
 #include <GLFW\glfw3.h>
 typedef struct {
-	float x, y;
+	float x, y, r,g,b,a;
 
 } Vertex;
 
@@ -23,7 +23,7 @@ typedef struct {
 
 
 
-typedef void** voidArray; //Used for input/output lists of unknown size/type
+typedef void** voidArray; //UsedN for input/output lists of unknown size/type
 typedef void(*ocfunc)(voidArray, voidArray); 
 
 typedef struct {
@@ -40,7 +40,7 @@ typedef struct {
 	std::map<Vertex, int> vertexIndexTable; 
 	std::vector<int> indices;
 	std::vector<Vertex> v;
-	unsigned int* shader;
+	shader screenshader;
 	//for rendering ONLY! for onclicks, iterate foreach uielement foreach triangle and check using angle trick
 
 } screen;

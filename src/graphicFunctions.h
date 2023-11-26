@@ -11,6 +11,7 @@
 #include <iostream>
 
 
+
 //Geometry Utils
 line drawline(Vertex v1, Vertex v2);
 triangle makeTriangle(Vertex v1, Vertex v2, Vertex v3);

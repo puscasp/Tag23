@@ -1,5 +1,4 @@
 #include "graphicFunctions.h"
-#include "shader.h"
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 void click_callback(GLFWwindow* window, int button, int action, int mods);
@@ -43,10 +42,13 @@ int main() {
 	glViewport(0, 0, WIDTH, HEIGHT);
 
 
-	Vertex v1 = { 0, 0 };
-	Vertex v2 = { 0.5, 0 };
-	Vertex v3 = { 0.5, 0.5 };
-	//Vertex v4 = { -0.5, 0.5 };
+	Vertex v1 = { 0, 0, 0.5,0,0,1};
+	Vertex v2 = { 0.5,0,0.5,0,0,1};
+	Vertex v3 = { 0.5, 0.5,0.5,0,0,1};
+
+	Vertex v4 = { -0.5, -0.5, 0, 0.5, 0, 1 };
+	Vertex v5 = { -0.5, 0, 0, 0.5, 0, 1 };
+	Vertex v6 = { -0.3, 0.3, 0, 0.5, 0, 1 };
 	//unsigned int shad = generateShader("C:/Users/Paul/Desktop/Tag23/src/shaders/vtest.vs", "C:/Users/Paul/Desktop/Tag23/src/shaders/ftest.fs", NULL, NULL);
 
 
@@ -54,11 +56,17 @@ int main() {
 
 
 	Vertex verts[] = { v1,v2,v3 };
-	screen testScreen = {};
+	Vertex verts2[] = { v4, v5, v6 };
+	screen testScreen = { {}, NULL, NULL, NULL, {}, {}, {} };
+
 	void* inputs[2] = { &x, &y };
 
-
 	testScreen.elementList.push_back(generateUiElement( verts, 3, NULL, oc_test, inputs, NULL));
+	std::cout << "testse" << std::endl;
+	testScreen.screenshader = testShader;
+
+
+	//testScreen.elementList.push_back(generateUiElement(verts2, 3, NULL, NULL, NULL, NULL));
 	activeScreen = &testScreen;
 	glfwSetMouseButtonCallback(window,clickmanager);
 
